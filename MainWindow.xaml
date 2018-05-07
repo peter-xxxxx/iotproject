@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Microsoft.Samples.Kinect.SkeletonBasics.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Skeleton Basics" Height="768.45" Width="1071.3" Loaded="WindowLoaded" Closing="WindowClosing">
+        Title="Skeleton Basics" Height="768.45" Width="1390.5" Loaded="WindowLoaded" Closing="WindowClosing">
 
     <Window.Resources>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
@@ -46,7 +46,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid Name="layoutGrid" Margin="10,0,0,49.2" HorizontalAlignment="Left" Width="1045">
+    <Grid Name="layoutGrid" Margin="10,0,0,49.2" HorizontalAlignment="Left" Width="1356">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="67.2"/>
             <RowDefinition/>
@@ -58,8 +58,8 @@
             <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18">Skeleton Basics</TextBlock>
             <Image Grid.Column="1" Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
         </DockPanel>
-        <Viewbox Stretch="Uniform" Margin="0,67,288,9.8" Grid.RowSpan="2">
-            <Image Name="Image" Width="578" Height="346" RenderTransformOrigin="0.496,0.504" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Viewbox Stretch="Uniform" Margin="0,67,615,9.6" Grid.RowSpan="2">
+            <Image Name="Image" Width="523" Height="338" RenderTransformOrigin="0.496,0.504" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </Viewbox>
         <CheckBox Grid.Row="2" Style="{StaticResource SquareCheckBox}" Content="Seated Mode" Height="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,29,0,29.4" Name="checkBoxSeatedMode" Checked="CheckBoxSeatedModeChanged" Unchecked="CheckBoxSeatedModeChanged" Width="130"/>
         <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}" Height="33">
@@ -69,5 +69,6 @@
         </StatusBar>
         <TextBox Name="showData" HorizontalAlignment="Left" Height="23" Margin="49,43.6,0,-33" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259"/>
         <TextBlock x:Name="showReceivedData"  HorizontalAlignment="Left" Margin="788,33.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="405" Width="215"/>
+        <Image x:Name="ColorImage" HorizontalAlignment="Left" Height="279" Margin="1029,33.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="317"/>
     </Grid>
 </Window>
