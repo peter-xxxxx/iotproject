@@ -221,9 +221,9 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             }
 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            server.Bind(new IPEndPoint(IPAddress.Any, 6001));//绑定端口号和IP
+            server.Bind(new IPEndPoint(IPAddress.Any, 6001));//Bind Port number and IPaddress
             
-            t = new Thread(ReciveMsg);//开启接收消息线程
+            t = new Thread(ReciveMsg);// start UDP thread to receive message
             t.Start();
             
         }
@@ -376,6 +376,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                 }
             }
 
+            // process and show data from Edison & IMU
             int swordX = Convert.ToInt32(Math.Cos(2 * Math.PI * swordData[0] / 360.0) * 100 * Math.Cos(Math.PI * swordData[1] / 360.0));
             int swordY = - Convert.ToInt32(Math.Sin(2 * Math.PI * swordData[0] / 360.0) * 100 * Math.Cos(Math.PI * swordData[1] / 360.0));
             int handX = this.sensor.CoordinateMapper.MapSkeletonPointToDepthPoint(skeleton.Joints[JointType.HandRight].Position, DepthImageFormat.Resolution640x480Fps30).X;
@@ -472,7 +473,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
         private int[] swordData = new int[4];
         /// <summary>
-        /// 接收发送给本机ip对应端口号的数据报
+        /// receive UDP message
         /// </summary>
         private void ReciveMsg()
         {
@@ -480,9 +481,9 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             {
                 try
                 {
-                    EndPoint point = new IPEndPoint(IPAddress.Any, 0);//用来保存发送方的ip和端口号
+                    EndPoint point = new IPEndPoint(IPAddress.Any, 0);//save ip address and port from sender
                     byte[] buffer = new byte[1024];
-                    int length = server.ReceiveFrom(buffer, ref point);//接收数据报
+                    int length = server.ReceiveFrom(buffer, ref point);//receive message
                     string message = Encoding.UTF8.GetString(buffer, 0, length);
 
                     this.showReceivedData.Dispatcher.Invoke(new ShowMessageDelegate(ShowMessage), message);
