@@ -1,6 +1,5 @@
-# iotproject
+# iotproject: Smart Assistant Coach for Fencers
 
-Smart Assistant Coach for Fencers
 
 Use Kinect SDK skeleton sample as base.
 
