@@ -39,7 +39,7 @@ the LCD object
 myLcd = lcd.Jhd1313m1(0, 0x3E, 0x62)
 myLcd.clear()
 myLcd.setCursor(0,0)
-myLcd.setColor(0, 0, 0)
+myLcd.setColor(255, 255, 255)
 myLcd.write("1234 Fencing")
 myLcd.setCursor(1, 0)
 myLcd.write("Press Button")
@@ -49,10 +49,14 @@ myLcd.write("Press Button")
 the sock object
 ================================================================================
 """
-UDP_IP = "192.168.0.105"
+UDP_IP = "192.168.0.13"
 UDP_PORT = 6001
-MESSAGE = ""
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+def SendMessage(Pitch, Roll, Yaw, color):
+    message = "{:.0f} {:.0f} {:.0f} {}".format(-Pitch, Yaw, Roll, color)
+    # 0: Blue; 1: Yellow;
+    sock.sendto(message, (UDP_IP, UDP_PORT))
 
 """
 ================================================================================
